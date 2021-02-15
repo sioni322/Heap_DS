@@ -58,10 +58,11 @@ int Heap::insert(int v) {
     array[size] = v;
     int child = size;
 
-    //Compare with parent node's value and swap
+    //Compare the parent node's value to the child node's value and swap
     while(size && child) {
         int parent = (child+1)/2-1;
 
+        //Compare and swap
         if((isMax == MAX && array[parent] < array[child]) || (isMax == MIN && array[parent] > array[child])) {
             swap(array[child], array[parent]);
             child = (child+1)/2-1;
@@ -87,7 +88,7 @@ int Heap::remove() {
 
     int parent = 0;
 
-    //Compare with parent node's value and swap
+    //Compare the parent node's value to the child node's value and swap
     while(1) {
         int child;
         int odd = parent*2+1;
@@ -108,7 +109,7 @@ int Heap::remove() {
                 child = even;
         }
 
-        //Compare the parent node to the child node and swap
+        //Compare and swap
         if((isMax == MAX && array[parent] < array[child]) || (isMax == MIN && array[parent] > array[child])) {
             swap(array[child], array[parent]);
             parent = child;
